@@ -1,0 +1,1 @@
+stm32g431_foc_hid\startup_stm32g431xx.o: startup_stm32g431xx.s
