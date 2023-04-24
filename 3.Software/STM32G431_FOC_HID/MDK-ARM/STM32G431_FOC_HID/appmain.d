@@ -57,3 +57,4 @@ stm32g431_foc_hid\appmain.o: ../BSP/PWM.h
 stm32g431_foc_hid\appmain.o: ../BSP/FOC.h
 stm32g431_foc_hid\appmain.o: ../BSP/AS5600.h
 stm32g431_foc_hid\appmain.o: ../BSP/IIC.h
+stm32g431_foc_hid\appmain.o: ../BSP/electricity_get.h

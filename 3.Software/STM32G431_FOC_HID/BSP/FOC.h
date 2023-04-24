@@ -75,7 +75,6 @@ void foc_test(float angle);   //测试
 //    void InvClarke();
 //    void InvPark(float angle);
 
-int calculate_current_I(uint16_t voltage);
 
 void set_foc_ud(float new_ud);
 void set_foc_uq(float new_uq);

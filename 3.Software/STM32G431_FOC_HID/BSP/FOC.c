@@ -187,11 +187,7 @@ float to_electrical_angle(float Mechanical_Angle){
 
 
 
-//将电压转换为电流,单位ma
-int calculate_current_I(uint16_t voltage){
-	//return (((float)(voltage/4096.0)*5.0) / 0.05) / 50.0;  完整表达式
-	return (int)((float)(voltage/2048.0) * 1000);  
-}
+
 
 //设置foc期望 Ud
 void set_foc_ud(float new_ud){
