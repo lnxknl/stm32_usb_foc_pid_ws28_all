@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../QT_FOC_HID/openglwidget.h"
+#include "../../QT_FOC_HID/OPENGL/openglwidget.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

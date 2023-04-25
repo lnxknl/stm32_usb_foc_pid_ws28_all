@@ -16,14 +16,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 INCLUDEPATH += $$PWD/Middlewares/hidapi-0.12.0/include/
-
+INCLUDEPATH += $$PWD/HID
+INCLUDEPATH += $$PWD/OPENGL
 SOURCES += \
+    HID/foc_hid.cpp \
     main.cpp \
-    openglwidget.cpp \
+    OPENGL/openglwidget.cpp \
     widget.cpp
 
 HEADERS += \
-    openglwidget.h \
+    HID/foc_hid.h \
+    OPENGL/openglwidget.h \
     widget.h
 
 FORMS += \
@@ -38,3 +41,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 LIBS += -L$$PWD/Middlewares/hidapi-0.12.0/x86/ -lhidapi    #添加usb hid库
+
+DISTFILES += \
+    OPENGL/fragment.shader \
+    OPENGL/vertex.shader
