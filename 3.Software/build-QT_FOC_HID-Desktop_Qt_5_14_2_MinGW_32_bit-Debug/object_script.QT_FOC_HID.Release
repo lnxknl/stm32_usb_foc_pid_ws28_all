@@ -1,0 +1,10 @@
+release/foc_hid.o
+release/main.o
+release/openglwidget.o
+release/test.o
+release/ttt.o
+release/widget.o
+release/moc_foc_hid.o
+release/moc_openglwidget.o
+release/moc_ttt.o
+release/moc_widget.o

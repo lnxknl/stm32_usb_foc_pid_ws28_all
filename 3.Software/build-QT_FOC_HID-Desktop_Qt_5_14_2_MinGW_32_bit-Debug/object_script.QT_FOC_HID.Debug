@@ -1,0 +1,10 @@
+debug/foc_hid.o
+debug/main.o
+debug/openglwidget.o
+debug/test.o
+debug/ttt.o
+debug/widget.o
+debug/moc_foc_hid.o
+debug/moc_openglwidget.o
+debug/moc_ttt.o
+debug/moc_widget.o

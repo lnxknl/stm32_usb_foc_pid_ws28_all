@@ -10,7 +10,7 @@
 #include "stdio.h"
 #include "tim.h"
 #include "adc.h"
-#include "usbd_cdc_if.h"
+//#include "usbd_cdc_if.h"
 
 #include "usart.h"
 

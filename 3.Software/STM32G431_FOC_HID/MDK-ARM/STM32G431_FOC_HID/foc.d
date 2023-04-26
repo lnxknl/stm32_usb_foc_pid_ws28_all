@@ -43,16 +43,6 @@ stm32g431_foc_hid\foc.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_
 stm32g431_foc_hid\foc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 stm32g431_foc_hid\foc.o: ../Core/Inc/tim.h
 stm32g431_foc_hid\foc.o: ../Core/Inc/adc.h
-stm32g431_foc_hid\foc.o: ../USB_Device/App/usbd_cdc_if.h
-stm32g431_foc_hid\foc.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
-stm32g431_foc_hid\foc.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
-stm32g431_foc_hid\foc.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
-stm32g431_foc_hid\foc.o: ../USB_Device/Target/usbd_conf.h
-stm32g431_foc_hid\foc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-stm32g431_foc_hid\foc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-stm32g431_foc_hid\foc.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
-stm32g431_foc_hid\foc.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
-stm32g431_foc_hid\foc.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 stm32g431_foc_hid\foc.o: ../Core/Inc/usart.h
 stm32g431_foc_hid\foc.o: ..\BSP\PWM.h
 stm32g431_foc_hid\foc.o: ..\BSP\AS5600.h

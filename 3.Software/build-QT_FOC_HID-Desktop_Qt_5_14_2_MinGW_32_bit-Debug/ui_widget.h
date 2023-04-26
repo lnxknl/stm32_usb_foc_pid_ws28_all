@@ -183,7 +183,7 @@ public:
 
         gridLayout_2->addItem(horizontalSpacer, 3, 1, 1, 1);
 
-        horizontalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         gridLayout_2->addItem(horizontalSpacer_2, 3, 3, 1, 1);
 

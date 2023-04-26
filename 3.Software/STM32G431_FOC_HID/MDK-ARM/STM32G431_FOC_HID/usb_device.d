@@ -48,5 +48,5 @@ stm32g431_foc_hid\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/
 stm32g431_foc_hid\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 stm32g431_foc_hid\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 stm32g431_foc_hid\usb_device.o: ../USB_Device/App/usbd_desc.h
-stm32g431_foc_hid\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
-stm32g431_foc_hid\usb_device.o: ../USB_Device/App/usbd_cdc_if.h
+stm32g431_foc_hid\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h
+stm32g431_foc_hid\usb_device.o: ../USB_Device/App/usbd_custom_hid_if.h

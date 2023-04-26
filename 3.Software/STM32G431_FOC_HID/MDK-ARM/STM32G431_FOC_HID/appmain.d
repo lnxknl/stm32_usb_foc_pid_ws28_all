@@ -42,8 +42,13 @@ stm32g431_foc_hid\appmain.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_u
 stm32g431_foc_hid\appmain.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 stm32g431_foc_hid\appmain.o: ../Core/Inc/tim.h
 stm32g431_foc_hid\appmain.o: ../Core/Inc/adc.h
-stm32g431_foc_hid\appmain.o: ../USB_Device/App/usbd_cdc_if.h
-stm32g431_foc_hid\appmain.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
+stm32g431_foc_hid\appmain.o: ../Core/Inc/usart.h
+stm32g431_foc_hid\appmain.o: ../BSP/PWM.h
+stm32g431_foc_hid\appmain.o: ../BSP/FOC.h
+stm32g431_foc_hid\appmain.o: ../BSP/AS5600.h
+stm32g431_foc_hid\appmain.o: ../BSP/IIC.h
+stm32g431_foc_hid\appmain.o: ../BSP/electricity_get.h
+stm32g431_foc_hid\appmain.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h
 stm32g431_foc_hid\appmain.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 stm32g431_foc_hid\appmain.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
 stm32g431_foc_hid\appmain.o: ../USB_Device/Target/usbd_conf.h
@@ -52,9 +57,3 @@ stm32g431_foc_hid\appmain.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 stm32g431_foc_hid\appmain.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 stm32g431_foc_hid\appmain.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 stm32g431_foc_hid\appmain.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
-stm32g431_foc_hid\appmain.o: ../Core/Inc/usart.h
-stm32g431_foc_hid\appmain.o: ../BSP/PWM.h
-stm32g431_foc_hid\appmain.o: ../BSP/FOC.h
-stm32g431_foc_hid\appmain.o: ../BSP/AS5600.h
-stm32g431_foc_hid\appmain.o: ../BSP/IIC.h
-stm32g431_foc_hid\appmain.o: ../BSP/electricity_get.h

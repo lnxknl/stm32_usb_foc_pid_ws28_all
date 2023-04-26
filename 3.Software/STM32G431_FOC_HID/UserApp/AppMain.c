@@ -4,6 +4,8 @@
 #include "PWM.h"
 #include "FOC.h"
 #include "electricity_get.h"
+#include "usbd_customhid.h"
+extern USBD_HandleTypeDef hUsbDeviceFS; //外部声明USB发送函数
 uint16_t ADC_convert_result;
 int I;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *hitm){
@@ -28,11 +30,13 @@ void AppMain(void){
 	pwm_init();
 	foc_init();
 	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_13,GPIO_PIN_SET);
-	HAL_TIM_Base_Start_IT(&htim2);
-	HAL_TIM_Base_Start_IT(&htim3);
+	//HAL_TIM_Base_Start_IT(&htim2);
+	//HAL_TIM_Base_Start_IT(&htim3);
 	
 	while(1){
-
+		//int8_t send_buf[8] = {//定义一个USB的发送BUFF
+       //                  1,2,3,4,5,6,7,8};
+//		a
 	}
 	
 	while(1){
