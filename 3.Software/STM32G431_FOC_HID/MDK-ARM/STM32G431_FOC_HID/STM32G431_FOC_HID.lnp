@@ -3,6 +3,7 @@
 "stm32g431_foc_hid\main.o"
 "stm32g431_foc_hid\gpio.o"
 "stm32g431_foc_hid\adc.o"
+"stm32g431_foc_hid\dma.o"
 "stm32g431_foc_hid\tim.o"
 "stm32g431_foc_hid\usart.o"
 "stm32g431_foc_hid\stm32g4xx_it.o"

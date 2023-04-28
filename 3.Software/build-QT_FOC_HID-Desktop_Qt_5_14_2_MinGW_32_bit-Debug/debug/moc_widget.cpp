@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[8];
-    char stringdata0[80];
+    QByteArrayData data[11];
+    char stringdata0[143];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,11 +40,16 @@ QT_MOC_LITERAL(3, 20, 5), // "index"
 QT_MOC_LITERAL(4, 26, 12), // "recvHID_Data"
 QT_MOC_LITERAL(5, 39, 22), // "QVector<unsigned char>"
 QT_MOC_LITERAL(6, 62, 4), // "data"
-QT_MOC_LITERAL(7, 67, 12) // "foc_hid_scan"
+QT_MOC_LITERAL(7, 67, 19), // "common_para_Uq_send"
+QT_MOC_LITERAL(8, 87, 19), // "common_para_Ud_send"
+QT_MOC_LITERAL(9, 107, 22), // "common_para_Speed_send"
+QT_MOC_LITERAL(10, 130, 12) // "foc_hid_scan"
 
     },
     "Widget\0page_switch\0\0index\0recvHID_Data\0"
-    "QVector<unsigned char>\0data\0foc_hid_scan"
+    "QVector<unsigned char>\0data\0"
+    "common_para_Uq_send\0common_para_Ud_send\0"
+    "common_para_Speed_send\0foc_hid_scan"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +59,7 @@ static const uint qt_meta_data_Widget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,13 +67,19 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   29,    2, 0x08 /* Private */,
-       4,    1,   32,    2, 0x08 /* Private */,
-       7,    0,   35,    2, 0x08 /* Private */,
+       1,    1,   44,    2, 0x08 /* Private */,
+       4,    1,   47,    2, 0x08 /* Private */,
+       7,    0,   50,    2, 0x08 /* Private */,
+       8,    0,   51,    2, 0x08 /* Private */,
+       9,    0,   52,    2, 0x08 /* Private */,
+      10,    0,   53,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void, 0x80000000 | 5,    6,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -82,7 +93,10 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         switch (_id) {
         case 0: _t->page_switch((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->recvHID_Data((*reinterpret_cast< QVector<unsigned char>(*)>(_a[1]))); break;
-        case 2: _t->foc_hid_scan(); break;
+        case 2: _t->common_para_Uq_send(); break;
+        case 3: _t->common_para_Ud_send(); break;
+        case 4: _t->common_para_Speed_send(); break;
+        case 5: _t->foc_hid_scan(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -128,13 +142,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 6;
     }
     return _id;
 }

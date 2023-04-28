@@ -39,6 +39,7 @@ stm32g431_foc_hid\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_
 stm32g431_foc_hid\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h
 stm32g431_foc_hid\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h
 stm32g431_foc_hid\main.o: ../Core/Inc/adc.h
+stm32g431_foc_hid\main.o: ../Core/Inc/dma.h
 stm32g431_foc_hid\main.o: ../Core/Inc/tim.h
 stm32g431_foc_hid\main.o: ../Core/Inc/usart.h
 stm32g431_foc_hid\main.o: ../USB_Device/App/usb_device.h
@@ -49,3 +50,8 @@ stm32g431_foc_hid\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 stm32g431_foc_hid\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 stm32g431_foc_hid\main.o: ../Core/Inc/gpio.h
 stm32g431_foc_hid\main.o: ../UserApp/common_inc.h
+stm32g431_foc_hid\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h
+stm32g431_foc_hid\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+stm32g431_foc_hid\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
+stm32g431_foc_hid\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+stm32g431_foc_hid\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h

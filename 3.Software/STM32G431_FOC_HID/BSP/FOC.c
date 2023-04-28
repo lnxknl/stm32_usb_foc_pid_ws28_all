@@ -4,7 +4,7 @@
 
 #include "FOC.h"
 #include "math.h"
-
+#include "USB_HIDCommunication.h"
 
 FOC_Parameter FOC_Parameter_M0;
 
@@ -15,7 +15,7 @@ void foc_init(void){
 
 	
 	
-	FOC_Parameter_M0.Desire_Ud = 0.0;
+	FOC_Parameter_M0.Desire_Ud = 1.5;
 	FOC_Parameter_M0.Desire_Uq = 2;
 	
 	FOC_Parameter_M0.Ts = 1.0;
@@ -57,10 +57,10 @@ void Sector_Determination(float u1 , float u2 ,float u3){
 void Generate_Sector_Time(void){
     float K = ROOT_SIGN_3 * FOC_Parameter_M0.Ts / FOC_Parameter_M0.Udc;
     float U1,U2,U3;
-
+	
     U1 = FOC_Parameter_M0.Ubeta;
     U2 = -0.8660254037844386 * FOC_Parameter_M0.Ualpha - FOC_Parameter_M0.Ubeta/2;
-    U3 =  0.8660254037844386* FOC_Parameter_M0.Ualpha - FOC_Parameter_M0.Ubeta/2;
+    U3 =  0.8660254037844386* FOC_Parameter_M0.Ualpha - FOC_Parameter_M0.Ubeta/2; 
     Sector_Determination(U1 , U2 ,U3);
     if( FOC_Parameter_M0.sector == 1){
         FOC_Parameter_M0.T4 = K * U3;
@@ -165,16 +165,23 @@ void Generate_SVPWM(void){
     pwm_update(Ta,Tb,Tc);
 }
 
-void Clarke(float *Ialpha , float *Ibeta){
-
-}
-void Park(float *Iq,float *Id){
-
+void cal_angle_sincos(){
+	FOC_Parameter_M0.cosVal =  cos(FOC_Parameter_M0.angle  * 0.0174532922222);
+	FOC_Parameter_M0.sinVal =  sin(FOC_Parameter_M0.angle  * 0.0174532922222);
 }
 
-void InvPark(float angle) {
-    FOC_Parameter_M0.Ualpha = FOC_Parameter_M0.Desire_Ud * cos(angle  * 0.0174532922222) - FOC_Parameter_M0.Desire_Uq * sin(angle * 0.0174532922222);
-    FOC_Parameter_M0.Ubeta  = FOC_Parameter_M0.Desire_Ud * sin(angle  * 0.0174532922222) + FOC_Parameter_M0.Desire_Uq * cos(angle * 0.0174532922222);
+void Clarke(float currU , float currV){
+	FOC_Parameter_M0.Ialpha =  currU;
+	FOC_Parameter_M0.Ibeta  = (currU + 2*currV) *  0.5773502692f;
+}
+void Park(){
+	FOC_Parameter_M0.Id = FOC_Parameter_M0.Ialpha *  FOC_Parameter_M0.cosVal + FOC_Parameter_M0.Ibeta *  FOC_Parameter_M0.sinVal;
+	FOC_Parameter_M0.Iq = -FOC_Parameter_M0.Ialpha * FOC_Parameter_M0.sinVal +  FOC_Parameter_M0.Ibeta *  FOC_Parameter_M0.cosVal;
+}
+
+void InvPark() {
+    FOC_Parameter_M0.Ualpha = FOC_Parameter_M0.Desire_Ud * FOC_Parameter_M0.cosVal - FOC_Parameter_M0.Desire_Uq * FOC_Parameter_M0.sinVal;
+    FOC_Parameter_M0.Ubeta  = FOC_Parameter_M0.Desire_Ud * FOC_Parameter_M0.sinVal + FOC_Parameter_M0.Desire_Uq * FOC_Parameter_M0.cosVal;
 }
 
 //将机械角度，转化为电角度，并且归一化0-360
@@ -208,34 +215,31 @@ void set_positioning_angle(uint16_t new_angle){
 }
  //开环控制 
 void open_loop_control(void){   
-	FOC_Parameter_M0.open_loop_angle += FOC_Parameter_M0.open_loop_speed;
-	if( FOC_Parameter_M0.open_loop_angle > 360)
-		FOC_Parameter_M0.open_loop_angle = 0;
-
-    InvPark(FOC_Parameter_M0.open_loop_angle);
+	float angle = read_as5600_angle();
+	hid_send_angle(angle);
+	angle = to_electrical_angle(angle);
+	FOC_Parameter_M0.angle = angle;
+	cal_angle_sincos();
+    InvPark();
     Generate_Sector_Time();
     Generate_SVPWM();
-	
 }
 //位置控制
 void positioning_control(void){
-	set_foc_uq(2.0);
-	set_foc_ud(0.5);
+	//set_foc_uq(2.0);
+	//set_foc_ud(0.5);
 	float angle = read_as5600_angle();
-	if( abs((int)angle - (int)FOC_Parameter_M0.positioning_angle) < 7)  //判断是否达到期望位置
+	hid_send_angle(angle);
+	if( abs((int)angle - (int)FOC_Parameter_M0.positioning_angle) < 4)  //判断是否达到期望位置
 	{	
-
 		pwm_halt();
 		return ;
 	}
-	angle = to_electrical_angle(angle+10.9);
-    InvPark(angle);
-    Generate_Sector_Time();
-    Generate_SVPWM();
-}
-void foc_test(float angle) {
+	 
 	angle = to_electrical_angle(angle);
-    InvPark(angle);
+	FOC_Parameter_M0.angle = angle;
+	cal_angle_sincos();
+    InvPark();
     Generate_Sector_Time();
     Generate_SVPWM();
 }

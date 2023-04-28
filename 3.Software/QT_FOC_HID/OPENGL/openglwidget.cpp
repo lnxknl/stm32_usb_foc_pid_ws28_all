@@ -14,7 +14,7 @@ OpenGLWidget::OpenGLWidget(QWidget *parent) : QOpenGLWidget(parent)
 }
 void OpenGLWidget::timerEvent(QTimerEvent *event)
 {
-    angle += 1 ;
+    angle += 0.2 ;
     if (angle >= 360)
         angle = 0;
     m_model.setToIdentity();

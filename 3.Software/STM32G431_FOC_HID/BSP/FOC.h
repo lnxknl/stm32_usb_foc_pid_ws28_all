@@ -23,10 +23,21 @@ typedef struct FOC_Parameter{
 	
 	float Ualpha;
 	float Ubeta;
-		
+	
+	float Ialpha;
+	float Ibeta;
+	
+	float Iq;
+	float Id;
+	
+	float sinVal;
+	float cosVal;
+	
+	float angle;
 	float Polar_Pair; //电机极对数
     float Udc; //母线电压
     float Ts;  //矢量作用总时长
+	
 	
 	  //扇区和以及扇区对应矢量作用时间
     uint8_t sector;
@@ -59,21 +70,12 @@ void Sector_Determination(float u1 , float u2 ,float u3);
 void Generate_Sector_Time(void);
 void Generate_SVPWM(void);
 
+void cal_angle_sincos();
 
+void Clarke(float currU , float currV);
+void Park();
+void InvPark();
 
-void InvPark(float angle);
-
-void foc_test(float angle);   //测试
-//    void Init();
-//    void update(float dangle);
-
-//    void test(float angle);
-
-//private:
-//    void Clarke(float *Ialpha , float *Ibeta);
-//    void Park(float *Iq,float *Id);
-//    void InvClarke();
-//    void InvPark(float angle);
 
 
 void set_foc_ud(float new_ud);

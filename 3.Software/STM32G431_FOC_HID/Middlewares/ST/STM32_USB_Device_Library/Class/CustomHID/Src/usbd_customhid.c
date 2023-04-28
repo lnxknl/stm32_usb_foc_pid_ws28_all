@@ -442,12 +442,12 @@ static uint8_t USBD_CUSTOM_HID_Init(USBD_HandleTypeDef *pdev, uint8_t cfgidx)
   }
 
   /* Open EP IN */
-  (void)USBD_LL_OpenEP(pdev, HID_EPIN_ADDR, USBD_EP_TYPE_INTR,  //KEYBOARD
-                 HID_EPIN_SIZE); 
+ 
   (void)USBD_LL_OpenEP(pdev, CUSTOM_HID_EPIN_ADDR, USBD_EP_TYPE_INTR,
                        CUSTOM_HID_EPIN_SIZE);
   
-
+  (void)USBD_LL_OpenEP(pdev, HID_EPIN_ADDR, USBD_EP_TYPE_INTR,  //KEYBOARD
+                 HID_EPIN_SIZE); 
 
   pdev->ep_in[CUSTOM_HID_EPIN_ADDR & 0xFU].is_used = 1U;
 

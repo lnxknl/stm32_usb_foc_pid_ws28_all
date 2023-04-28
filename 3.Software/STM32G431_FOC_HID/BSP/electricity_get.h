@@ -8,11 +8,11 @@
 
 
 
-int calculate_current_I(uint32_t voltage);
+float calculate_current_I(uint32_t voltage);
 
 void start_adc();
-int get_adc_value();
-
+float get_adc_u_value();
+float get_adc_v_value();
 
 
 #endif

@@ -7,7 +7,7 @@
 
 
 void _iic_delay(void){
-    int time = 500;
+    int time = 100;
     while( time --);
 }
 

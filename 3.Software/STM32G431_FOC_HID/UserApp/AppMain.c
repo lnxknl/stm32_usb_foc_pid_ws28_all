@@ -4,50 +4,55 @@
 #include "PWM.h"
 #include "FOC.h"
 #include "electricity_get.h"
-#include "usbd_customhid.h"
-extern USBD_HandleTypeDef hUsbDeviceFS; //外部声明USB发送函数
-uint16_t ADC_convert_result;
-int I;
+#include "USB_HIDCommunication.h"
+int flag;
+
+int RUNNING_MODE;
+
+
+#define Idle_Mode			0		//空闲
+#define Open_Loop_Mode		1		//开环
+#define Location_Mode		2		//位置环
+#define Moment_Forece_Mode	3		//力矩(电流环)
+#define Speed_Mode			4		//力矩(电流环)
+#define HID_KeyBoard_Mode	5		//HID键盘模式(电机为位置环)
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *hitm){
 	
-	if( hitm == &htim2)  //跟新频率25Khz
+	if( hitm == &htim1 )  //跟新频率25Khz
 	{
-		open_loop_control();
-
-		//positioning_control();
-		I = get_adc_value();
+		if( flag == 1){
+			
+			if( RUNNING_MODE == Idle_Mode)
+			{	
+				pwm_halt();
+				return;
+			}
+			else if(RUNNING_MODE == Open_Loop_Mode)
+				open_loop_control();
+			else if(RUNNING_MODE == Location_Mode)
+				positioning_control();
+			flag = 0;
+		}
+		else
+			flag = 1;
 	}
-	if( hitm == &htim3 )  //启动电流采集
+	if( hitm == &htim3 )  //50khz
 	{
-		start_adc();	//启动ADC转换
+		 
 	}
-     
- 
 }
 
 void AppMain(void){
-	
+	RUNNING_MODE = Idle_Mode;
 	pwm_init();
 	foc_init();
 	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_13,GPIO_PIN_SET);
-	//HAL_TIM_Base_Start_IT(&htim2);
-	//HAL_TIM_Base_Start_IT(&htim3);
-	
+	HAL_TIM_Base_Start_IT(&htim1);
+	HAL_TIM_Base_Start_IT(&htim2);
+	HAL_TIM_Base_Start_IT(&htim3);
 	while(1){
-		//int8_t send_buf[8] = {//定义一个USB的发送BUFF
-       //                  1,2,3,4,5,6,7,8};
-//		a
+		hid_recv_data();
 	}
 	
-	while(1){
-			//uint16_t adc;
-//		int i;
-//		uint16_t ADC_Value[2];
-//   
-//		HAL_ADC_Start(&hadc1);    //启动ADC转换
-//		HAL_ADC_PollForConversion(&hadc1,0x10);  //等待转换完成
-//		ADC_Value[1] = HAL_ADC_GetValue(&hadc1);	//获取转换值
-//		usb_printf("%d,\n",I);
-
-	}
 }

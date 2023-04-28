@@ -43,4 +43,13 @@ stm32g431_foc_hid\electricity_get.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4
 stm32g431_foc_hid\electricity_get.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 stm32g431_foc_hid\electricity_get.o: ../Core/Inc/tim.h
 stm32g431_foc_hid\electricity_get.o: ../Core/Inc/adc.h
+stm32g431_foc_hid\electricity_get.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h
+stm32g431_foc_hid\electricity_get.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+stm32g431_foc_hid\electricity_get.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
+stm32g431_foc_hid\electricity_get.o: ../USB_Device/Target/usbd_conf.h
+stm32g431_foc_hid\electricity_get.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+stm32g431_foc_hid\electricity_get.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+stm32g431_foc_hid\electricity_get.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
+stm32g431_foc_hid\electricity_get.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+stm32g431_foc_hid\electricity_get.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 stm32g431_foc_hid\electricity_get.o: ../Core/Inc/usart.h

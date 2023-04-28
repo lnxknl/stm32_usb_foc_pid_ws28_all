@@ -205,8 +205,8 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
 		//printf("USB_Recive_Buffer[%d] = 0x%x \r\n",i,USB_Recive_Buffer[i]); //打印接收到的信息，确认是否正确，调试用
 	} 
 	USB_Received_Count = 8;
-	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, USB_Recive_Buffer, sizeof(USB_Recive_Buffer));
-  return (USBD_OK);
+	//USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, USB_Recive_Buffer, sizeof(USB_Recive_Buffer));
+   return (USBD_OK);
   /* USER CODE END 6 */
 }
 

@@ -11,7 +11,7 @@
 #include "tim.h"
 #include "adc.h"
 //#include "usbd_cdc_if.h"
-
+#include "usbd_customhid.h"
 #include "usart.h"
 
 void AppMain(void);

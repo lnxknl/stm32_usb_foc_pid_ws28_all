@@ -3,7 +3,8 @@
 Foc_Hid::Foc_Hid(QObject *parent) : QObject(parent)
 {
     status = 0;
-    read_time.start(500);
+    read_time.setTimerType(Qt::PreciseTimer);
+    read_time.start(1);
     connect(&read_time , &QTimer::timeout , this , &Foc_Hid::read_scan);
 
 }
@@ -66,23 +67,21 @@ void Foc_Hid::usb_hid_read(){
     if( status == 0)
         return ;
     int res;
-    qDebug() << "ab c";
+    //qDebug() << "ab c";
     if(handle == NULL )
     {
         handle = hid_open_path(hid_path);
         qDebug() << "abasd c";
         return ;
     }
-    qDebug() << "ab c";
-    //hid_set_nonblocking(handle, 1);
+   // qDebug() << "ab c";
+    hid_set_nonblocking(handle, 1);
     res = hid_read(handle, recvbuf, TXRX_MAXSIZE + 1);
     if(res < 0){
        /*返回值查看*/
        qDebug("err_string = %ls\n",hid_error(handle));
     }
-//    for(int i = 0;i<8;i++){
-//           qDebug("buf[%d]:%02x",i,recvbuf[i]);
-//       }
+
     return ;
 }
 
@@ -97,7 +96,7 @@ void Foc_Hid::read_scan(){
 //    for(int i = 0;i<8;i++){
 //           qDebug("buf[%d]:%02x",i,recvbuf[i]);
 //       }
-   //  qDebug("err_string = %02x %02x\n",recvbuf[0],recvbuf[7]);
+     qDebug("err_string = %02x %02x\n",recvbuf[0],recvbuf[2]);
     if( recvbuf[0] == 0xef && recvbuf[7] == 0xab)
     {
       //  qDebug() << "recvbuf[0]";

@@ -37,10 +37,12 @@ void pwm_update(float Ta , float Tb , float Tc){
 	 else Tc = Tc;
 	
 	
-	
-    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,Ta * PWM_50KHZ_ARR);
-    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,Tb * PWM_50KHZ_ARR);
-    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_3,Tc * PWM_50KHZ_ARR);
+	htim1.Instance->CCR1 = Ta * PWM_50KHZ_ARR;
+	htim1.Instance->CCR2 = Tb * PWM_50KHZ_ARR;
+	htim1.Instance->CCR3 = Tc * PWM_50KHZ_ARR;
+//    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,Ta * PWM_50KHZ_ARR);
+//    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,Tb * PWM_50KHZ_ARR);
+//    __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_3,Tc * PWM_50KHZ_ARR);
 
     //printf("%lf,%lf,%lf\r\n",Ta * TIM_ARR,Tb * TIM_ARR,Tc * TIM_ARR);
 }
