@@ -9,14 +9,15 @@ OpenGLWidget::OpenGLWidget(QWidget *parent) : QOpenGLWidget(parent)
 
     loadobj("F:\\Gitee\\STM32G431CBT6\\4008_FOC_HID\\3.Software\\QT_FOC_HID\\model\\motor.obj",m_vPoints);
     angle = 0;
-    startTimer(1000 / 60);
+    startTimer(1);
 
+}
+void OpenGLWidget::set_new_angle(uint16_t new_angle){
+    angle = new_angle;
 }
 void OpenGLWidget::timerEvent(QTimerEvent *event)
 {
-    angle += 0.2 ;
-    if (angle >= 360)
-        angle = 0;
+
     m_model.setToIdentity();
     m_model.rotate(angle, 0,0, 1);
     m_model.scale(1.25);

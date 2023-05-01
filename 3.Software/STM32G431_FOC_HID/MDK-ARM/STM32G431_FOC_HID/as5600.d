@@ -44,6 +44,7 @@ stm32g431_foc_hid\as5600.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_ua
 stm32g431_foc_hid\as5600.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 stm32g431_foc_hid\as5600.o: ../Core/Inc/tim.h
 stm32g431_foc_hid\as5600.o: ../Core/Inc/adc.h
+stm32g431_foc_hid\as5600.o: ../USB_Device/App/usbd_custom_hid_if.h
 stm32g431_foc_hid\as5600.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h
 stm32g431_foc_hid\as5600.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 stm32g431_foc_hid\as5600.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h

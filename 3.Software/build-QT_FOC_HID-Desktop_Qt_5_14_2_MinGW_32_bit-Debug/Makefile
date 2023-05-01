@@ -272,8 +272,10 @@ Makefile: ../QT_FOC_HID/QT_FOC_HID.pro D:/Softwares/QT/5.14.2/mingw73_32/mkspecs
 		D:/Softwares/QT/5.14.2/mingw73_32/mkspecs/features/yacc.prf \
 		D:/Softwares/QT/5.14.2/mingw73_32/mkspecs/features/lex.prf \
 		../QT_FOC_HID/QT_FOC_HID.pro \
+		D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5Charts.prl \
 		D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5Widgets.prl \
 		D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5Gui.prl \
+		D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5SerialPort.prl \
 		D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5Core.prl \
 		D:/Softwares/QT/5.14.2/mingw73_32/lib/qtmain.prl \
 		D:/Softwares/QT/5.14.2/mingw73_32/mkspecs/features/build_pass.prf
@@ -480,8 +482,10 @@ D:/Softwares/QT/5.14.2/mingw73_32/mkspecs/features/exceptions.prf:
 D:/Softwares/QT/5.14.2/mingw73_32/mkspecs/features/yacc.prf:
 D:/Softwares/QT/5.14.2/mingw73_32/mkspecs/features/lex.prf:
 ../QT_FOC_HID/QT_FOC_HID.pro:
+D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5Charts.prl:
 D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5Widgets.prl:
 D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5Gui.prl:
+D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5SerialPort.prl:
 D:/Softwares/QT/5.14.2/mingw73_32/lib/Qt5Core.prl:
 D:/Softwares/QT/5.14.2/mingw73_32/lib/qtmain.prl:
 D:/Softwares/QT/5.14.2/mingw73_32/mkspecs/features/build_pass.prf:

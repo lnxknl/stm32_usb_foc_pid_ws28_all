@@ -21,6 +21,9 @@ typedef struct FOC_Parameter{
 	float Desire_Uq;   
 	
 	
+	float currU;
+	float currV;
+	
 	float Ualpha;
 	float Ubeta;
 	
@@ -52,12 +55,12 @@ typedef struct FOC_Parameter{
 	
 	
 	//开环
-	float open_loop_angle; //开环角度
+	float open_loop_direction; //开环方向 0 -顺时针   1 - 逆时针
 	float open_loop_speed; //开环速度
 	
 	//位置
 	uint16_t positioning_angle; //期望角度
-
+		
 }FOC_Parameter;
 
 
@@ -72,12 +75,16 @@ void Generate_SVPWM(void);
 
 void cal_angle_sincos();
 
-void Clarke(float currU , float currV);
+void Clarke();
 void Park();
 void InvPark();
 
+void update_currUV(void);
 
+float get_M_Iq();
+float get_M_Id();
 
+void set_foc_open_loop_direction(unsigned char direction);
 void set_foc_ud(float new_ud);
 void set_foc_uq(float new_uq);
 void set_open_loop_speed(float new_speed);

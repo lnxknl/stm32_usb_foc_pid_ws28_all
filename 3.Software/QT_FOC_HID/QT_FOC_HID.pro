@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui charts  serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,11 +22,13 @@ SOURCES += \
     HID/foc_hid.cpp \
     main.cpp \
     OPENGL/openglwidget.cpp \
+    seriescommunication.cpp \
     widget.cpp
 
 HEADERS += \
     HID/foc_hid.h \
     OPENGL/openglwidget.h \
+    seriescommunication.h \
     widget.h
 
 FORMS += \

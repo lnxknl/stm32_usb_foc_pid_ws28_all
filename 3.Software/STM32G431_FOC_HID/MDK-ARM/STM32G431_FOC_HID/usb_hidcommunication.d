@@ -43,6 +43,7 @@ stm32g431_foc_hid\usb_hidcommunication.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/st
 stm32g431_foc_hid\usb_hidcommunication.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 stm32g431_foc_hid\usb_hidcommunication.o: ../Core/Inc/tim.h
 stm32g431_foc_hid\usb_hidcommunication.o: ../Core/Inc/adc.h
+stm32g431_foc_hid\usb_hidcommunication.o: ../USB_Device/App/usbd_custom_hid_if.h
 stm32g431_foc_hid\usb_hidcommunication.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h
 stm32g431_foc_hid\usb_hidcommunication.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 stm32g431_foc_hid\usb_hidcommunication.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h

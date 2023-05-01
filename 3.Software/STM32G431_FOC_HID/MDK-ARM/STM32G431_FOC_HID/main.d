@@ -50,6 +50,7 @@ stm32g431_foc_hid\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 stm32g431_foc_hid\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 stm32g431_foc_hid\main.o: ../Core/Inc/gpio.h
 stm32g431_foc_hid\main.o: ../UserApp/common_inc.h
+stm32g431_foc_hid\main.o: ../USB_Device/App/usbd_custom_hid_if.h
 stm32g431_foc_hid\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h
 stm32g431_foc_hid\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 stm32g431_foc_hid\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h

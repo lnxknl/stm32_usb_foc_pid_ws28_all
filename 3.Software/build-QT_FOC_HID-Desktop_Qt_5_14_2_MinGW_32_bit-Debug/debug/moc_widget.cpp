@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[11];
-    char stringdata0[143];
+    QByteArrayData data[14];
+    char stringdata0[198];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,13 +43,18 @@ QT_MOC_LITERAL(6, 62, 4), // "data"
 QT_MOC_LITERAL(7, 67, 19), // "common_para_Uq_send"
 QT_MOC_LITERAL(8, 87, 19), // "common_para_Ud_send"
 QT_MOC_LITERAL(9, 107, 22), // "common_para_Speed_send"
-QT_MOC_LITERAL(10, 130, 12) // "foc_hid_scan"
+QT_MOC_LITERAL(10, 130, 26), // "open_loop_para_direct_send"
+QT_MOC_LITERAL(11, 157, 2), // "en"
+QT_MOC_LITERAL(12, 160, 24), // "position_para_Angle_send"
+QT_MOC_LITERAL(13, 185, 12) // "foc_hid_scan"
 
     },
     "Widget\0page_switch\0\0index\0recvHID_Data\0"
     "QVector<unsigned char>\0data\0"
     "common_para_Uq_send\0common_para_Ud_send\0"
-    "common_para_Speed_send\0foc_hid_scan"
+    "common_para_Speed_send\0"
+    "open_loop_para_direct_send\0en\0"
+    "position_para_Angle_send\0foc_hid_scan"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +64,7 @@ static const uint qt_meta_data_Widget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,18 +72,22 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   44,    2, 0x08 /* Private */,
-       4,    1,   47,    2, 0x08 /* Private */,
-       7,    0,   50,    2, 0x08 /* Private */,
-       8,    0,   51,    2, 0x08 /* Private */,
-       9,    0,   52,    2, 0x08 /* Private */,
-      10,    0,   53,    2, 0x08 /* Private */,
+       1,    1,   54,    2, 0x08 /* Private */,
+       4,    1,   57,    2, 0x08 /* Private */,
+       7,    0,   60,    2, 0x08 /* Private */,
+       8,    0,   61,    2, 0x08 /* Private */,
+       9,    0,   62,    2, 0x08 /* Private */,
+      10,    1,   63,    2, 0x08 /* Private */,
+      12,    0,   66,    2, 0x08 /* Private */,
+      13,    0,   67,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void, 0x80000000 | 5,    6,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,   11,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -96,7 +105,9 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 2: _t->common_para_Uq_send(); break;
         case 3: _t->common_para_Ud_send(); break;
         case 4: _t->common_para_Speed_send(); break;
-        case 5: _t->foc_hid_scan(); break;
+        case 5: _t->open_loop_para_direct_send((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 6: _t->position_para_Angle_send(); break;
+        case 7: _t->foc_hid_scan(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -142,13 +153,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
 }

@@ -6,6 +6,7 @@
 
 
 uint32_t ADC_VALUE[2] ={0,0};// = 0;
+uint32_t LAST_ADC_VALUE[2] ={0,0};// = 0;
 //void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)  //在中断回调函数中读取
 //{
 //    ADC_VALUE = HAL_ADC_GetValue(&hadc1);  //这样可以不浪费资源，当然放在主函数中读取也行
@@ -22,11 +23,15 @@ float calculate_current_I(uint32_t voltage){
 
 //获取电流值
 float get_adc_u_value(){
-	return calculate_current_I(ADC_VALUE[0]);
+	float adc =  (ADC_VALUE[0] + LAST_ADC_VALUE[0]) /2.0;
+	LAST_ADC_VALUE[0]= ADC_VALUE[0];
+	return calculate_current_I(adc);
 }
 //获取电流值
 float get_adc_v_value(){
-	return calculate_current_I(ADC_VALUE[1]);
+	float adc =  (ADC_VALUE[1] + LAST_ADC_VALUE[1]) /2.0;
+	LAST_ADC_VALUE[1]= ADC_VALUE[1];
+	return calculate_current_I(adc);
 }
 
 //开始adc采样

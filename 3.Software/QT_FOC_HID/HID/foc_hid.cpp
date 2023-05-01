@@ -19,6 +19,8 @@ Foc_Hid::Foc_Hid(QObject *parent) : QObject(parent)
 bool Foc_Hid::scan_foc_connect(){
     hid_device_info *hid_info;//usb链表
     hid_info = hid_enumerate(0x10c4,0x82cd);
+    if(hid_info == nullptr)
+        status = 0;
     if(status == 1)
         return 1;
     for(;hid_info != nullptr;hid_info = hid_info->next){

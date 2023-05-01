@@ -11,6 +11,10 @@ unsigned char USB_Received_Count = 0;//USB接收数据计数
 
 extern USBD_HandleTypeDef hUsbDeviceFS; //外部声明USB发送函数
 
+
+void data_send(uint8_t* Buf, uint16_t Len){
+	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS,Buf,Len);
+}
 //发送Uq
 void hid_send_Uq(float uq){
 	Message_Struct message;
@@ -21,7 +25,7 @@ void hid_send_Uq(float uq){
 	message.data2.float_t = uq;
 	message.tail = Communication_tail;
 
-	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (unsigned char *)&message, sizeof(message));
+	data_send((unsigned char *)&message, 8);
 }
 void hid_send_Ud(float ud){
 	Message_Struct message;
@@ -32,7 +36,7 @@ void hid_send_Ud(float ud){
 	message.data2.float_t = ud;
 	message.tail = Communication_tail;
 
-	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (unsigned char *)&message, sizeof(message));
+	data_send((unsigned char *)&message, 8);
 }
 void hid_send_Iq(float iq){
 	Message_Struct message;
@@ -43,36 +47,43 @@ void hid_send_Iq(float iq){
 	message.data2.float_t = iq;
 	message.tail = Communication_tail;
 
-	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (unsigned char *)&message, sizeof(message));
+	data_send((unsigned char *)&message, 8);
 }
 void hid_send_Id(float id){
-Message_Struct message;
+	Message_Struct message;
 	
 	message.head = Communication_head;
 	message.function = 0x14;
 	message.data1 = 0x2f;
 	message.data2.float_t = id;
 	message.tail = Communication_tail;
-	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (unsigned char *)&message, sizeof(message));
+	data_send((unsigned char *)&message, 8);
 }
  //发送角度
-void hid_send_angle(unsigned int angle){
+void hid_send_angle(float angle){
 	
 	Message_Struct message;
 	
 	message.head = Communication_head;
 	message.function = 0x14;
 	message.data1 = 0x2d;
-	message.data2.ca[0] = 0x00;
-	message.data2.ca[1] = 0x00;
-	message.data2.ca[2] = (angle >> 8) & 0xFF;
-	message.data2.ca[3] = angle & 0xFF;
+	message.data2.float_t = angle;
 	message.tail = Communication_tail;
-
-	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (unsigned char *)&message, sizeof(message));
+	data_send((unsigned char *)&message, 8);
 }
 
-
+//发送速度
+void hid_send_speed(float speed){
+	
+	Message_Struct message;
+	
+	message.head = Communication_head;
+	message.function = 0x14;
+	message.data1 = 0x2c;
+	message.data2.float_t = speed;
+	message.tail = Communication_tail;
+	data_send((unsigned char *)&message, 8);
+}
 
 
 
@@ -81,9 +92,12 @@ void hid_recv_data(void){
 		return; 
 	if(USB_Recive_Buffer[0] != Communication_head || USB_Recive_Buffer[7] != Communication_tail)
 		return ;
-	if( USB_Recive_Buffer[1] == 0x12)
-		Common_Parameters_Parsing();
-			
+	if( USB_Recive_Buffer[1] == 0x12)   //公共参数
+		Common_Parameters_Parsing(); 
+	else if( USB_Recive_Buffer[1] == 0x22)  //位置环参数
+		Position_Parameters_Parsing();
+	else if( USB_Recive_Buffer[1] == 0x32)  //开环参数
+		Open_Loop_Parameters_Parsing();
 	USB_Received_Count = 0;	
 }
 extern int RUNNING_MODE;
@@ -117,4 +131,50 @@ void Common_Parameters_Parsing(void){
 	else if(  USB_Recive_Buffer[2] == 0x2c ){
 		
 	}
+}
+//位置控制参数
+void Position_Parameters_Parsing(void){
+	if( USB_Recive_Buffer[2] == 0x1a ){
+		uint16_t angle = (USB_Recive_Buffer[5] << 8 ) + USB_Recive_Buffer[6];
+		set_positioning_angle(angle);
+	}
+			
+}
+//开环控制参数
+void Open_Loop_Parameters_Parsing(void){
+	//设置正反转
+	if( USB_Recive_Buffer[2] == 0x1a ){
+		set_foc_open_loop_direction(USB_Recive_Buffer[6]);
+	}
+}
+
+
+
+
+void hid_keyboard_nextsong_send(void){
+	uint8_t keyboard_buf[8] = {0,0,0,0,0,0,0,0};
+	
+	keyboard_buf[0] = 0x05;////0x5;  //ctrl + alt
+	keyboard_buf[2] = 0x4F;//0x4F; //left
+	
+	USBD_KEYBOADR_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&keyboard_buf,8);  //发送按下
+	HAL_Delay(15);
+	keyboard_buf[0] = 0x00;  //ctrl + alt
+	keyboard_buf[2] = 0x00; //left
+	USBD_KEYBOADR_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&keyboard_buf, 8);
+	HAL_Delay(15);
+	
+}
+void hid_keyboard_previoussong_send(void){
+	uint8_t keyboard_buf[8] = {0,0,0,0,0,0,0,0};
+	
+	keyboard_buf[0] = 0x05;  //ctrl + alt
+	keyboard_buf[2] = 0x50; //left
+	
+	data_send((unsigned char *)&keyboard_buf, 8);
+	HAL_Delay(5);
+	keyboard_buf[0] = 0x0;  //ctrl + alt
+	keyboard_buf[2] = 0x0; //left
+	data_send((unsigned char *)&keyboard_buf, 8);
+	HAL_Delay(5);
 }

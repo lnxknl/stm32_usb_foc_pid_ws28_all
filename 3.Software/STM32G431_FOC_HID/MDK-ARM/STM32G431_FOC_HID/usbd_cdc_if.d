@@ -48,4 +48,3 @@ stm32g431_foc_hid\usbd_cdc_if.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_h
 stm32g431_foc_hid\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 stm32g431_foc_hid\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 stm32g431_foc_hid\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
-stm32g431_foc_hid\usbd_cdc_if.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

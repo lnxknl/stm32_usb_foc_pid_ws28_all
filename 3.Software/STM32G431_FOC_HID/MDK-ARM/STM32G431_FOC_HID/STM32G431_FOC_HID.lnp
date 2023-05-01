@@ -47,6 +47,7 @@
 "stm32g431_foc_hid\foc.o"
 "stm32g431_foc_hid\electricity_get.o"
 "stm32g431_foc_hid\usb_hidcommunication.o"
+"stm32g431_foc_hid\pid.o"
 --library_type=microlib --strict --scatter "STM32G431_FOC_HID\STM32G431_FOC_HID.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

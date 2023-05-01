@@ -39,6 +39,10 @@ private:
 
     QTimer timer;
     float angle = 0;
+
+public:
+    void set_new_angle(uint16_t new_angle);
+
 private:
     QOpenGLShaderProgram *m_program;
     QOpenGLVertexArrayObject m_vao;
