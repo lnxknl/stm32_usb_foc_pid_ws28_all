@@ -101,7 +101,7 @@ void Widget::page_switch(int index){
     ui->stackedWidget->setCurrentIndex(index);
 
     char data[8];
-    data[0] = Communication_head;
+    data[0] = Communication_head;// @NOTE 
     data[1] = 0x12;
     data[2] = 0x20;
     data[3] = 0;

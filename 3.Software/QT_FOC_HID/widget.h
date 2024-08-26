@@ -24,7 +24,7 @@ typedef union
 }float_uchar_Data;
 
 
-#define Communication_head  0xef
+#define Communication_head  0xef// @NOTE 
 #define Communication_tail  0xab
 
 #define Common_Parameters   0x14

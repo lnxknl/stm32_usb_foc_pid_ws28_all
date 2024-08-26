@@ -9,7 +9,7 @@
 extern unsigned char USB_Recive_Buffer[8];
 extern unsigned char USB_Received_Count;
 
-#define Communication_head  0xef
+#define Communication_head  0xef// @NOTE 
 #define Communication_tail  0xab
 
 

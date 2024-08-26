@@ -88,9 +88,9 @@ void hid_send_speed(float speed){
 
 
 void hid_recv_data(void){
-	if( USB_Received_Count == 0 )  //没有接收到数据
+	if( USB_Received_Count == 0 )  //没有接收到数据// @NOTE 
 		return; 
-	if(USB_Recive_Buffer[0] != Communication_head || USB_Recive_Buffer[7] != Communication_tail)
+	if(USB_Recive_Buffer[0] != Communication_head || USB_Recive_Buffer[7] != Communication_tail)// @NOTE 
 		return ;
 	if( USB_Recive_Buffer[1] == 0x12)   //公共参数
 		Common_Parameters_Parsing(); 

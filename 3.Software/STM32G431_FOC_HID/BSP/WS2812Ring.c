@@ -86,7 +86,7 @@ void WS2812Ring::WS2812_Write_L(){
 	__NOP();__NOP();__NOP();__NOP();__NOP();__NOP();__NOP();__NOP();__NOP();
 }
 
-void WS2812Ring::WS2812_WriteRGB(uint8_t R,uint8_t G,uint8_t B){
+void WS2812Ring::WS2812_WriteRGB(uint8_t R,uint8_t G,uint8_t B){// @NOTE 
    uint8_t i;
    for( i = 0 ;i < 8 ;i++){
        if( G & 0x80)

@@ -88,7 +88,7 @@
   */
 
 /** Usb HID report descriptor. */
-__ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DESC_SIZE] __ALIGN_END =
+__ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DESC_SIZE] __ALIGN_END =// @NOTE 
 {
 	0x06, 0x00, 0xff,              // USAGE_PAGE (Vendor Defined Page 1)
     0x09, 0x01,                    // USAGE (Vendor Usage 1)
@@ -142,12 +142,12 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state);
   * @}
   */
 
-USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS =
+USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS =// @NOTE 
 {
   CUSTOM_HID_ReportDesc_FS,
   CUSTOM_HID_Init_FS,
   CUSTOM_HID_DeInit_FS,
-  CUSTOM_HID_OutEvent_FS
+  CUSTOM_HID_OutEvent_FS// @NOTE 
 };
 
 /** @defgroup USBD_CUSTOM_HID_Private_Functions USBD_CUSTOM_HID_Private_Functions
@@ -187,7 +187,7 @@ static int8_t CUSTOM_HID_DeInit_FS(void)
   */
 extern unsigned char USB_Recive_Buffer[8];
 extern unsigned char USB_Received_Count;
-static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
+static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)// @NOTE 
 {
   /* USER CODE BEGIN 6 */
   UNUSED(event_idx);
@@ -200,7 +200,7 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
 	char i;
 	for(i=0;i<8;i++) 
 	{
-		USB_Recive_Buffer[i]=hhid->Report_buf[i];  //把接收到的数据送到自定义的缓存区保存（Report_buf[i]为USB的接收缓存区）
+		USB_Recive_Buffer[i]=hhid->Report_buf[i];  //把接收到的数据送到自定义的缓存区保存（Report_buf[i]为USB的接收缓存区）// @NOTE 
 		
 		//printf("USB_Recive_Buffer[%d] = 0x%x \r\n",i,USB_Recive_Buffer[i]); //打印接收到的信息，确认是否正确，调试用
 	} 

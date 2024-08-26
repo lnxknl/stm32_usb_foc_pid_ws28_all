@@ -5,7 +5,7 @@
 #include <windows.h>
 #include "hidapi.h"
 #include <QTimer>
-
+// 0xef
 #define TXRX_MAXSIZE  8
 class Foc_Hid : public QObject
 {

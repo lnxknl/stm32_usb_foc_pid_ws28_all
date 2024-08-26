@@ -21,7 +21,7 @@ SeriesCommunication::SeriesCommunication(QObject *parent) : QObject(parent)
 
 void SeriesCommunication::DataReceived(){
     char *data =  serial.read(8).data();
-    if((unsigned char)data[0] != 0xef || (unsigned char)data[7] != 0xab)
+    if((unsigned char)data[0] != 0xef || (unsigned char)data[7] != 0xab)// @NOTE 
         return;
     QVector<unsigned char> d;
     d.push_back(data[1]);

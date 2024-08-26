@@ -105,13 +105,13 @@ static uint8_t *USBD_CUSTOM_HID_GetDeviceQualifierDesc(uint16_t *length);
   * @{
   */
 
-USBD_ClassTypeDef  USBD_CUSTOM_HID =
+USBD_ClassTypeDef  USBD_CUSTOM_HID =// @NOTE  // #@****
 {
   USBD_CUSTOM_HID_Init,
   USBD_CUSTOM_HID_DeInit,
   USBD_CUSTOM_HID_Setup,
   NULL, /*EP0_TxSent*/
-  USBD_CUSTOM_HID_EP0_RxReady, /*EP0_RxReady*/ /* STATUS STAGE IN */
+  USBD_CUSTOM_HID_EP0_RxReady, /*EP0_RxReady*/ /* STATUS STAGE IN */// @NOTE 
   USBD_CUSTOM_HID_DataIn, /*DataIn*/
   USBD_CUSTOM_HID_DataOut,
   NULL, /*SOF */
@@ -767,7 +767,7 @@ static uint8_t USBD_CUSTOM_HID_DataIn(USBD_HandleTypeDef *pdev, uint8_t epnum)
   * @param  epnum: endpoint index
   * @retval status
   */
-static uint8_t USBD_CUSTOM_HID_DataOut(USBD_HandleTypeDef *pdev, uint8_t epnum)
+static uint8_t USBD_CUSTOM_HID_DataOut(USBD_HandleTypeDef *pdev, uint8_t epnum)// @NOTE 
 {
   UNUSED(epnum);
   USBD_CUSTOM_HID_HandleTypeDef *hhid;
@@ -781,7 +781,7 @@ static uint8_t USBD_CUSTOM_HID_DataOut(USBD_HandleTypeDef *pdev, uint8_t epnum)
 
   /* USB data will be immediately processed, this allow next USB traffic being
   NAKed till the end of the application processing */
-  ((USBD_CUSTOM_HID_ItfTypeDef *)pdev->pUserData)->OutEvent(hhid->Report_buf[0],
+  ((USBD_CUSTOM_HID_ItfTypeDef *)pdev->pUserData)->OutEvent(hhid->Report_buf[0],// @NOTE 
                                                             hhid->Report_buf[1]);
 
   return (uint8_t)USBD_OK;
@@ -794,7 +794,7 @@ static uint8_t USBD_CUSTOM_HID_DataOut(USBD_HandleTypeDef *pdev, uint8_t epnum)
   * @param  pdev: device instance
   * @retval status
   */
-uint8_t USBD_CUSTOM_HID_ReceivePacket(USBD_HandleTypeDef *pdev)
+uint8_t USBD_CUSTOM_HID_ReceivePacket(USBD_HandleTypeDef *pdev)// @NOTE 
 {
   USBD_CUSTOM_HID_HandleTypeDef *hhid;
 
@@ -819,7 +819,7 @@ uint8_t USBD_CUSTOM_HID_ReceivePacket(USBD_HandleTypeDef *pdev)
   * @param  pdev: device instance
   * @retval status
   */
-static uint8_t USBD_CUSTOM_HID_EP0_RxReady(USBD_HandleTypeDef *pdev)
+static uint8_t USBD_CUSTOM_HID_EP0_RxReady(USBD_HandleTypeDef *pdev)// @NOTE 
 {
   USBD_CUSTOM_HID_HandleTypeDef *hhid = (USBD_CUSTOM_HID_HandleTypeDef *)pdev->pClassData;
 

@@ -23,7 +23,7 @@ int revioussong_send_flag = 0;
 #define Speed_Mode			4		//速度环
 #define HID_KeyBoard_Mode	5		//HID键盘模式(电机为位置环)
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *hitm){
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *hitm){// @NOTE 
 	
 	if( hitm == &htim1 )  //更新频率25Khz
 	{
@@ -66,7 +66,7 @@ void AppMain(void){
 	HAL_TIM_Base_Start_IT(&htim3);
 	while(1){
 		hid_recv_data();
-		hid_keyboard_nextsong_send();
+		hid_keyboard_nextsong_send();// @NOTE 
 		HAL_Delay(20);
 		hid_send_Iq(get_M_Iq());
 		HAL_Delay(20);

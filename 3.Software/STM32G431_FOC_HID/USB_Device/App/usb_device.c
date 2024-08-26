@@ -63,7 +63,7 @@ extern USBD_DescriptorsTypeDef CUSTOM_HID_Desc;
   * Init USB device Library, add supported class and start the library
   * @retval None
   */
-void MX_USB_Device_Init(void)
+void MX_USB_Device_Init(void)// @NOTE 
 {
   /* USER CODE BEGIN USB_Device_Init_PreTreatment */
 
@@ -73,10 +73,10 @@ void MX_USB_Device_Init(void)
   if (USBD_Init(&hUsbDeviceFS, &CUSTOM_HID_Desc, DEVICE_FS) != USBD_OK) {
     Error_Handler();
   }
-  if (USBD_RegisterClass(&hUsbDeviceFS, &USBD_CUSTOM_HID) != USBD_OK) {
+  if (USBD_RegisterClass(&hUsbDeviceFS, &USBD_CUSTOM_HID) != USBD_OK) {// @NOTE  #@****
     Error_Handler();
   }
-  if (USBD_CUSTOM_HID_RegisterInterface(&hUsbDeviceFS, &USBD_CustomHID_fops_FS) != USBD_OK) {
+  if (USBD_CUSTOM_HID_RegisterInterface(&hUsbDeviceFS, &USBD_CustomHID_fops_FS) != USBD_OK) {// @NOTE  // write a stm32 hid USBD_CUSTOM_HID_RegisterInterface function usage example 
     Error_Handler();
   }
   if (USBD_Start(&hUsbDeviceFS) != USBD_OK) {
